@@ -1,0 +1,25 @@
+<div class="card" *ngIf="instance != null">
+    <div class="card-header">
+        Flight Search Details
+    </div>
+    <div class="container">
+        <div class="form-row">
+            <div class="row">
+                <div class="col-3"><b>Origin</b></div>
+                <div class="col-6">{{instance?.originSelection.name}}</div>
+            </div>
+            <div class="row">
+                <div class="col-3"><b>Destination</b></div>
+                <div class="col-6">{{instance?.destinationSelection.name}}</div>
+            </div>
+            <div class="row">
+                <div class="col-3"><b>Departure Date</b></div>
+                <div class="col-6">{{instance?.departureDate}}</div>
+            </div>
+            <div class="row">
+                <div class="col-3"><b>Travellers</b></div>
+                <div class="col-6">{{ instance?.travelers.adults + instance?.travelers.childrens + instance?.travelers.infants}}</div>
+            </div>
+        </div>
+    </div>
+</div>

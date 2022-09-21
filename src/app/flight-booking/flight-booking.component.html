@@ -1,0 +1,77 @@
+<br>
+<div class="card">
+    <div class="card-header">
+        Flight Booking
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="row d-flex p-3">
+                <div class="col-3">
+                    <span>From</span>
+                    <select class="form-control input-sm" id="origin" [(ngModel)]="originSelection">
+                        <option *ngFor="let elt of airports" [ngValue]="elt">
+                            {{elt.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-3">
+                    <span>To</span>
+                    <select class="form-control input-sm" id="destination" [(ngModel)]="destinationSelection">
+                        <option *ngFor="let elt of airports" [ngValue]="elt">
+                            {{elt.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-3">
+                    <span>Departure Date</span>
+                    <input type="date" class="form-control input-sm" min="{{minDate}}" id="departure-date"
+                        placeholder="Departure" [(ngModel)]="departureDate" />
+                </div>
+
+                <div class="col-3">
+                    <button class="btn btn-primary" (click)="open(mymodal)" style="margin:20px">Travellers</button>
+                </div>
+                <div class="row d-flex p-3">
+                    <div class="col-md-2">
+                        <button class="btn btn-primary" (click)="displayData()">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add Number of Travellers</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="col-10">
+            <b>Adults-</b><span>12 years & above on the day of travel</span>
+            <div class="d-flex col-6">
+                <button type="button" (click)="minusPlusAdults('minus')">-</button>
+                <input type="text" class="form-control input-sm" [(ngModel)]="adults" />
+                <button type="button" (click)="minusPlusAdults('plus')">+</button>
+            </div>
+            <b>Children-</b><span>2-12 years on the day of travel</span>
+            <div class="d-flex col-6">
+                <button type="button" (click)="minusPlusChildrens('minus')">-</button>
+                <input type="text" class="form-control input-sm" [(ngModel)]="childrens" />
+                <button type="button" (click)="minusPlusChildrens('plus')">+</button>
+            </div>
+            <b>Infants-</b><span>Under 2 years on the day of travel</span>
+            <div class="d-flex col-6">
+                <button type="button" (click)="minusPlusInfants('minus')">-</button>
+                <input type="text" class="form-control input-sm" [(ngModel)]="infants" />
+                <button type="button" (click)="minusPlusInfants('plus')">+</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Done</button>
+    </div>
+</ng-template>
+<br>
+<app-flight-booking-details></app-flight-booking-details>
